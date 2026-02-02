@@ -41,7 +41,7 @@ KEY FEATURES & FUNCTIONALITY
    
    Dataset Sources:
    • Upload CSV: Import your own energy efficiency dataset
-   • Generate Synthetic: Auto-generate 500,000 realistic building records
+   • Generate Synthetic: Pre-loaded 500,000 realistic building records
      (UCI Energy Efficiency Dataset-inspired schema)
    
    Supported Dataset Schema:
