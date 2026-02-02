@@ -11,9 +11,9 @@ Hack-Earth is an interactive machine learning laboratory built with Streamlit
 that enables comprehensive analysis, modeling, and prediction of building energy 
 efficiency. The platform uses advanced machine learning techniques to model the 
 relationship between building physical characteristics and their heating/cooling 
-energy requirements.
+energy requirements (Based on the pre loaded dataset!).
 
-The application is designed for researchers, engineers, and sustainability 
+The application is designed for researchers, engineers, Analysts and sustainability 
 professionals to:
   • Load and analyze energy efficiency datasets
   • Train and compare multiple ML models for regression and classification tasks
@@ -236,7 +236,7 @@ KEY FEATURES & FUNCTIONALITY
      - Important for interpreting classification metrics
 
 
-6. SCENARIO TESTER: WHAT-IF ANALYSIS
+6. SCENARIO TESTER: WHAT-IF ANALYSIS (Still under Developmental Phase!)
    ────────────────────────────────────────────────────────────────────────
    
    Interactive prediction interface for hypothetical building scenarios
@@ -970,6 +970,7 @@ Current Branch: main
 Default Branch: main
 
 Future Enhancement Ideas:
+• Deploying on Deep Learning Models (Neural Networks)
 • Model explanation features (SHAP values)
 • Hyperparameter optimization (Optuna/Hyperopt)
 • Ensemble stacking/voting mechanisms
