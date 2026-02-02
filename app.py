@@ -202,9 +202,9 @@ with st.sidebar:
                                 help="Quantile creates balanced classes; uniform uses equal-width ranges.")
 
     st.header("3) Split & Sample")
-    test_size = st.slider("Test size (%)", 10, 40, 20) / 100.0
+    test_size = st.slider("Test size (%)", 10) / 100.0
     random_state = st.number_input("Random seed", value=42, step=1)
-    max_rows = st.number_input("Subsample rows for speed (0=use all)", min_value=0, value=200_000, step=50_000,
+    max_rows = st.number_input("Subsample rows for speed", min_value=0, value=200_000, step=50_000,
                                help="Training all 500k rows can be heavy. Subsample for rapid experiments.")
 
     st.header("4) Models & Options")
@@ -479,8 +479,17 @@ if go:
 
             # scale numeric if used
             if scale_numeric and scaler is not None:
-                num_cols = [c for c in scenario_X.columns if np.issubdtype(scenario_X[c].dtype, np.number)]
-                scenario_X[num_cols] = scaler.transform(scenario_X[num_cols])
+                # Ensure columns match those used during scaler fitting
+                scaler_cols = scaler.feature_names_in_
+                for col in scaler_cols:
+                    if col not in scenario_X.columns:
+                        scenario_X[col] = 0
+                scenario_X_scaled = scaler.transform(scenario_X[scaler_cols])
+                scenario_X[scaler_cols] = scenario_X_scaled
+
+            # Print the columns of scenario_X and the fitted feature names
+            print("Columns in scenario_X:", scenario_X.columns.tolist())
+            print("Fitted feature names:", scaler.get_feature_names_out())
 
             st.markdown("**Compare predictions across your selected models:**")
             rows = []
